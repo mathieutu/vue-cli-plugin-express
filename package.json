@@ -1,0 +1,24 @@
+{
+  "name": "vue-cli-plugin-express",
+  "version": "0.0.1",
+  "description": "vue-cli 3 plugin to add an Express Api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathieutu/vue-cli-plugin-express.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-cli",
+    "express",
+    "api"
+  ],
+  "author": "Mathieu TUDISCO <dev@mathieutu.ovh>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mathieutu/vue-cli-plugin-express/issues"
+  },
+  "homepage": "https://github.com/mathieutu/vue-cli-plugin-express#readme",
+  "peerDependencies": {
+    "@vue/cli-shared-utils": "^3.0.0"
+  }
+}
