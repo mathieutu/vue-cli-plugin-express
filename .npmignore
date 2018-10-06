@@ -1,0 +1,6 @@
+node_modules/
+.eslintignore
+.eslintrc.js
+yarn.lock
+logo.psd
+src/**/.tmp*

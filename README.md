@@ -1,6 +1,6 @@
-# vue-cli-plugin-apollo
+# vue-cli-plugin-express
 
-[![npm](https://img.shields.io/npm/v/vue-cli-plugin-express.svg) ![npm](https://img.shields.io/npm/dm/vue-cli-plugin-express.svg)](https://www.npmjs.com/package/vue-cli-plugin-express)
+[![npm](https://img.shields.io/npm/v/vue-cli-plugin-express.svg) ![npm](https://img.shields.io/npm/dt/vue-cli-plugin-express.svg)](https://www.npmjs.com/package/vue-cli-plugin-express)
 [![vue-cli3](https://img.shields.io/badge/vue--cli-3.x-brightgreen.svg)](https://github.com/vuejs/vue-cli)
 
 **:rocket: Add an API in your Vue application in 2 minutes!**
@@ -9,30 +9,24 @@ This is a vue-cli 3.x plugin to add an Node Express server in your Vue project.
 
 <br>
 
+![screenshot](./screenshot.png)
+
+<br>
+
 **:star: Features:**
 
 - Included fully customizable Express Server:
-  - You just have to add your api routes into your project (with import/export support)
-  - Optional and customisable automatic fallback to the Vue app, to serve both the api and the application with only one command. 
+  - Just add your api routes into your project (with import/export support) without thinking to something else.
+  - Optional automatic fallback to the Vue app, to serve both the api and the application with only one command. 
 - (soon) Included optional example routes and components.
 
 ## Table of contents
 
 - [Getting started](#getting-started)
-  - [Usage](#usage)
+- [Usage](#usage)
 - [Injected Commands](#injected-commands)
 - [Configuration](#configuration)
-  - [Client state](#client-state)
-  - [Authorization Header](#authorization-header)
-  - [Plugin options](#plugin-options)
-  - [Mocks](#mocks)
-  - [Directives](#directives)
-  - [Apollo Engine](#apollo-engine)
-  - [Express middlewares](#express-middlewares)
-- [Env variables](#env-variables)
-- [Injected webpack-chain Rules](#injected-webpack-chain-rules)
-- [Running the GraphQL server in production](#running-the-graphql-server-in-production)
-- [Manual code changes](#manual-code-changes)
+- [Use your app in production](#use-your-app-in-production)
 
 ---
 
@@ -56,26 +50,31 @@ Navigate to the newly created project folder and add the cli plugin:
 cd my-new-app
 vue add express
 ```
-
+Soon:
 *:information_source: An example `APIExample.vue` component will be added into your sources if you chose to include the examples.*
 
-### Usage
+## Usage
 
-To start your application for development purpose, use theses commands:
+To start your server for development purpose, use this commands:
 
 ```
-yarn run express:watch
-yarn serve
+yarn express:watch
 ```
 
 The server will be automatically restarted when a change is detected.
 
-To run the server only once, use this command:
+You just then have to start the app:
+
 ```
-yarn run express:run
+yarn serve
 ```
 
-**Updating `vue-cli-plugin-express` will update the Express Server service :+1:**
+To run the server only once for production use, run:
+```
+yarn express:run
+```
+
+**Updating `vue-cli-plugin-express` will update the Express server service :+1:**
 
 ## Injected Commands
 
@@ -89,35 +88,33 @@ yarn run express:run
 
 ## Configuration
 
-### Plugin options
-
 The Express Server can be configured via the `pluginOptions` in `vue.config.js`:
 
-``` js
+```js
 module.exports = {
   // Other options...
   pluginOptions: {
     // Express-related options
     express: {
-     // TODO
+        shouldServeApp: true,
+        serverDir: './srv',
       },
     },
   },
 }
 ```
 
-## Running the Express server in production
-
-### Production app
-
-```
-cross-env NODE_ENV=production yarn run express:run --mode production
+## Use your app in production
+```bash
+yarn build
+yarn express:run
 ```
 
+Example in your package.json, for most of hosting services:
 ```json
 {
   "scripts": {
-    "start": "cross-env NODE_ENV=production yarn run express:run --mode production" 
+    "start": "yarn express:run" 
   }
 }
 ```
