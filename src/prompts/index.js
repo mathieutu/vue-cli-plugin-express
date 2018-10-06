@@ -1,4 +1,4 @@
-const { serverDir, shouldServeApp } = require('../config');
+import { serverDir, shouldServeApp } from '../config';
 
 module.exports = [
   {
