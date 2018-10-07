@@ -1,7 +1,5 @@
 import express from 'express';
-import { load } from './utils/misc';
 import listEndpoints from 'express-list-endpoints';
-
 import history from 'connect-history-api-fallback';
 
 export default ({
@@ -19,7 +17,9 @@ export default ({
       require('ts-node/register/transpile-only');
     }
 
-    load(srvPath)(app);
+    const server = loadServer(srvPath);
+
+    server(app);
 
     if (isInProduction && shouldServeApp) {
       app.use(history());
@@ -30,8 +30,26 @@ export default ({
       if (err) {
         reject(err);
       } else {
-        resolve(listEndpoints(app));
+        resolve(getAppEndpoints(app));
       }
     });
   });
 };
+
+function getAppEndpoints (app) {
+  try {
+    return listEndpoints(app);
+  } catch (e) {
+    return [];
+  }
+}
+
+function loadServer (file) {
+  const empty = () => {};
+  try {
+    const module = require(file);
+    return module.default || module || empty;
+  } catch (e) {
+    return empty;
+  }
+}

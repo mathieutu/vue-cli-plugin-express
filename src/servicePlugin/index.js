@@ -2,10 +2,11 @@ import config from '../config';
 import serveCommand from './serveCommand';
 import runCommand from './runCommand';
 import webpackConfig from './webpackConfig';
+import { coalesce } from '../utils/misc';
 
 module.exports = (api, options) => {
   const expressOptions = (options.pluginOptions && options.pluginOptions.express) || {};
-  const shouldServeApp = expressOptions.shouldServeApp || config.shouldServeApp;
+  const shouldServeApp = coalesce(expressOptions.shouldServeApp, config.shouldServeApp);
   const isInProduction = process.env.NODE_ENV === 'production';
   const srvPath = api.resolve(expressOptions.serverDir || config.serverDir);
   const distPath = api.resolve(options.outputDir);

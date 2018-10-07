@@ -17,7 +17,9 @@ export default {
     fs.writeFileSync(tmpPath, url);
   },
   deleteFile () {
-    fs.unlinkSync(tmpPath);
+    if (this.isSet()) {
+      fs.unlinkSync(tmpPath);
+    }
   },
 
   async findServerUrl (args, defaults) {

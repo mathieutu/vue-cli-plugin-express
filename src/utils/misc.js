@@ -7,9 +7,3 @@ export const coalesce = (...args) => {
 
   return null;
 };
-
-export const load = file => {
-  const module = require(file);
-
-  return module.default || module;
-};

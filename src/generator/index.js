@@ -14,9 +14,10 @@ module.exports = (api, options, rootOptions) => {
     },
   });
 
-  api.render('./templates/srv');
+  api.render({[`${options.serverDir}/index.js`]: './templates/srv/index.js'});
 
   if (options.addExamples) {
     // TODO
   }
 };
+
