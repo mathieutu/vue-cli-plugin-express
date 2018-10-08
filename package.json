@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-express",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "vue-cli 3 plugin to add an Express Api",
   "main": "index.js",
   "scripts": {

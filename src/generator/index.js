@@ -20,4 +20,3 @@ module.exports = (api, options, rootOptions) => {
     // TODO
   }
 };
-
