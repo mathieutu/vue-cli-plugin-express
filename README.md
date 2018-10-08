@@ -58,7 +58,7 @@ Soon:
 To start your server for development purpose, use this commands:
 
 ```
-yarn express:watch
+yarn express
 ```
 
 The server will be automatically restarted when a change is detected.
