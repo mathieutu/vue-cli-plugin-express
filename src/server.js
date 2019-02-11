@@ -35,7 +35,6 @@ export default ({
         resolve(getAppEndpoints(app));
       }
     });
-
   });
 };
 
@@ -48,11 +47,21 @@ function getAppEndpoints (app) {
 }
 
 function loadServer (file) {
+  const moduleIsAvailable = () => {
+    try {
+      require.resolve(file);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
   const empty = () => {};
-  try {
-    const module = require(file);
-    return module.default || module || empty;
-  } catch (e) {
+
+  if (!moduleIsAvailable()) {
     return empty;
   }
+
+  const module = require(file);
+  return module.default || module || empty;
 }
