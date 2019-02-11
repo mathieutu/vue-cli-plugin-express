@@ -1,6 +1,7 @@
 import express from 'express';
 import listEndpoints from 'express-list-endpoints';
 import history from 'connect-history-api-fallback';
+import httpServer from 'http';
 
 export default ({
   port,
@@ -12,6 +13,7 @@ export default ({
 }) => {
   return new Promise((resolve, reject) => {
     const app = express();
+    const http = httpServer.Server(app);
 
     if (hasTypescript) {
       require('ts-node/register/transpile-only');
@@ -19,20 +21,21 @@ export default ({
 
     const server = loadServer(srvPath);
 
-    server(app);
+    server(app, http);
 
     if (isInProduction && shouldServeApp) {
       app.use(history());
       app.use(express.static(distPath));
     }
 
-    app.listen(port, err => {
+    http.listen(port, err => {
       if (err) {
         reject(err);
       } else {
         resolve(getAppEndpoints(app));
       }
     });
+
   });
 };
 
