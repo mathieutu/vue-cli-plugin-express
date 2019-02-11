@@ -1,12 +1,13 @@
 {
   "name": "vue-cli-plugin-express",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "vue-cli 3 plugin to add an Express Api",
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run test ",
     "test": "npm run test:eslint",
-    "test:eslint": "eslint --ext .js ."
+    "test:eslint": "eslint --ext .js .",
+    "changelog": "gitmoji-changelog"
   },
   "repository": {
     "type": "git",
@@ -43,7 +44,8 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "gitmoji-changelog": "^1.1.0"
   },
   "peerDependencies": {
     "@vue/cli-service": "^3.0.0",
