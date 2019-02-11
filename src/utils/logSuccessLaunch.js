@@ -35,7 +35,7 @@ export default ({ urls, routes, isInProduction, shouldServeApp }) => {
 
   console.log();
   if (routes.length) {
-    console.log('  🔀 api routes found:');
+    console.log('  🔀 Api routes found:');
     console.log(routesTable(routes));
   } else {
     console.log(`  🔀 No api routes found${isInProduction ? '' : ' (yet?)'}.`);
