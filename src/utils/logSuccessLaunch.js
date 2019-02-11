@@ -3,7 +3,7 @@ import { clearConsole, done, hasYarn } from '@vue/cli-shared-utils';
 import chalk from 'chalk';
 
 export default ({ urls, routes, isInProduction, shouldServeApp }) => {
-  const cmd = exec => `${chalk.cyan((hasYarn ? 'yarn ' : 'npm run ') + exec)}`;
+  const cmd = exec => `${chalk.cyan((hasYarn() ? 'yarn ' : 'npm run ') + exec)}`;
 
   clearConsole();
   done('', Date().toString());
