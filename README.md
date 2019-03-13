@@ -106,12 +106,16 @@ module.exports = {
 ```
 
 ## Use your app in production
+
+Move `@vue/cli-service` from `devDependencies`to `dependencies`.
+
+Execute the following commands:
 ```bash
 yarn build
 yarn express:run
 ```
 
-Example in your package.json, for most of hosting services:
+For most of cloud hosting services, you can add a `start` command that will be triggered automatically:
 ```json
 {
   "scripts": {
