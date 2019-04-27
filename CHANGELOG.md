@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="1.0.1"></a>
+## 1.0.1 (2019-04-27)
+
+### Fixed
+
+- 🐛 Fix the esm version because of [#14](https://github.com/mathieutu/vue-cli-plugin-express/issues/14). [[14ccf5e](https://github.com/mathieutu/vue-cli-plugin-express/commit/14ccf5e58f980845d1ec5fc47c8e49cbc9fde959)]
+
+### Documentation
+
+- 📝 Update production launch doc (fix [#1](https://github.com/mathieutu/vue-cli-plugin-express/issues/1)). [[cc70895](https://github.com/mathieutu/vue-cli-plugin-express/commit/cc7089560f0a80c7b74b75ddd06be0f42d57a053)]
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2019-02-11)
 
