@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import nodemon from 'nodemon';
 import { commandOptionsDefaults } from '../config';
 import serverUrl from '../utils/serverUrl';
-import porxyPath from '../utils/proxyPaths';
 import proxyPaths from '../utils/proxyPaths';
 
 export default ({
