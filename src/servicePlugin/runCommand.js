@@ -1,4 +1,5 @@
 import serverUrl from '../utils/serverUrl';
+import proxyPaths from '../utils/proxyPaths';
 import logSuccessLunch from '../utils/logSuccessLaunch';
 import server from '../server';
 
@@ -13,6 +14,7 @@ export default ({
   const run = async (resolve) => {
     const {
       port,
+      host,
       localUrl,
       networkUrl,
       localUrlForTerminal,
@@ -20,6 +22,7 @@ export default ({
 
     const routes = await server({
       port,
+      host,
       srvPath,
       distPath,
       hasTypescript,
@@ -29,6 +32,7 @@ export default ({
 
     if (shouldServeApp && !isInProduction) {
       serverUrl.writeToFile(localUrl);
+      proxyPaths.writeToFile(routes);
     }
 
     logSuccessLunch({

@@ -2,6 +2,8 @@ import chalk from 'chalk';
 import nodemon from 'nodemon';
 import { commandOptionsDefaults } from '../config';
 import serverUrl from '../utils/serverUrl';
+import porxyPath from '../utils/proxyPaths';
+import proxyPaths from '../utils/proxyPaths';
 
 export default ({
   srvPath,
@@ -35,6 +37,7 @@ export default ({
     nodemon.on('quit', () => {
       resolve();
       serverUrl.deleteFile();
+      proxyPaths.deleteFile();
       process.exit();
     });
   });
