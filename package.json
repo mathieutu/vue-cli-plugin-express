@@ -1,11 +1,11 @@
 {
   "name": "vue-cli-plugin-express",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vue-cli 3 plugin to add an Express Api",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "npm run test ",
-    "test": "npm run test:eslint",
+    "prepublishOnly": "yarn test ",
+    "test": "yarn test:eslint",
     "test:eslint": "eslint --ext .js .",
     "changelog": "gitmoji-changelog"
   },

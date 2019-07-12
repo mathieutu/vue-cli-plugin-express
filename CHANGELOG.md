@@ -1,5 +1,18 @@
 # Changelog
 
+<a name="1.0.2"></a>
+## 1.0.2 (2019-07-12)
+
+### Fixed
+
+- 🐛 Pass host to server.listen method. ([#18](https://github.com/mathieutu/vue-cli-plugin-express/issues/18)) [[366429c](https://github.com/mathieutu/vue-cli-plugin-express/commit/366429cf8121856d6a597897d144c81680e1c114)]
+
+### Miscellaneous
+
+- 👷‍♂️ Add automatic publishing with CI. [[06fdd1f](https://github.com/mathieutu/vue-cli-plugin-express/commit/06fdd1f22aa92886a9b85a44dd8dd8cbc4ac27cf)]
+- 📦 Update packages. [[dae8fed](https://github.com/mathieutu/vue-cli-plugin-express/commit/dae8fed5a0b3cda700ab6a28e2a121033fb8d10f)]
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2019-04-27)
 
