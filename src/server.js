@@ -5,6 +5,7 @@ import httpServer from 'http';
 
 export default ({
   port,
+  host,
   srvPath,
   distPath,
   hasTypescript,
@@ -28,7 +29,7 @@ export default ({
       app.use(express.static(distPath));
     }
 
-    http.listen(port, err => {
+    http.listen(port, host, err => {
       if (err) {
         reject(err);
       } else {

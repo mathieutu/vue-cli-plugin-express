@@ -13,6 +13,7 @@ export default ({
   const run = async (resolve) => {
     const {
       port,
+      host,
       localUrl,
       networkUrl,
       localUrlForTerminal,
@@ -20,6 +21,7 @@ export default ({
 
     const routes = await server({
       port,
+      host,
       srvPath,
       distPath,
       hasTypescript,
