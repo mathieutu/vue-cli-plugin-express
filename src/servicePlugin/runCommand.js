@@ -1,4 +1,5 @@
 import serverUrl from '../utils/serverUrl';
+import proxyPaths from '../utils/proxyPaths';
 import logSuccessLunch from '../utils/logSuccessLaunch';
 import server from '../server';
 
@@ -29,6 +30,7 @@ export default ({
 
     if (shouldServeApp && !isInProduction) {
       serverUrl.writeToFile(localUrl);
+      proxyPaths.writeToFile(routes);
     }
 
     logSuccessLunch({
