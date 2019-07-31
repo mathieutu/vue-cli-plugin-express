@@ -54,7 +54,7 @@ cd my-new-app
 vue add express
 ```
 
-:soon: _:information_source: An example `APIExample.vue` component will be added should you choose to include examples when installing the plugin._
+:soon: _An example `APIExample.vue` component will be added should you choose to include examples when installing the plugin. ([⚠️ Needs contribution!](https://github.com/mathieutu/vue-cli-plugin-express/issues/12))_
 
 ## Usage
 
