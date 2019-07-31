@@ -115,7 +115,7 @@ module.exports = {
 ### Production
 
 For production use you need to move `@vue/cli-service` from `devDependencies`to `dependencies`.
-Then build your app and run the server;
+Then build your app and run the server:
 
 ```sh
 yarn build
