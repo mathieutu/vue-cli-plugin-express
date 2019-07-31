@@ -19,7 +19,7 @@ This is a vue-cli 3.x plugin to add a Node Express server to your Vue project.
   - Just add your api routes into your project (with import/export support)
   - Optional automatic fallback to the Vue app. Serve both the api and the application with Express
   - Optional socket.io support
-- :soon: Example routes and components
+- 🔜 Example routes and components ([⚠️ Needs contribution!](https://github.com/mathieutu/vue-cli-plugin-express/issues/12))
 
 ## Table of contents
 
