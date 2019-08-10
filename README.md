@@ -5,7 +5,7 @@
 
 **:rocket: Add an API in your Vue application in 2 minutes!**
 
-This is a vue-cli 3.x plugin to add an Node Express server in your Vue project.
+This is a vue-cli 3.x plugin to add a Node Express server to your Vue project.
 
 <br>
 
@@ -15,19 +15,19 @@ This is a vue-cli 3.x plugin to add an Node Express server in your Vue project.
 
 **:star: Features:**
 
-- Included fully customizable Express Server:
-  - Just add your api routes into your project (with import/export support) without thinking to something else.
-  - Optional automatic fallback to the Vue app, to serve both the api and the application with only one command. 
-  - Optional socket.io support.
-- (soon) Included optional example routes and components.
+- Fully customizable Express Server:
+  - Just add your api routes into your project (with import/export support)
+  - Optional automatic fallback to the Vue app. Serve both the api and the application with Express
+  - Optional socket.io support
+- 🔜 Example routes and components ([⚠️ Needs contribution!](https://github.com/mathieutu/vue-cli-plugin-express/issues/12))
 
 ## Table of contents
 
 - [Getting started](#getting-started)
 - [Usage](#usage)
+- [Use your app in production](#use-your-app-in-production)
 - [Injected Commands](#injected-commands)
 - [Configuration](#configuration)
-- [Use your app in production](#use-your-app-in-production)
 
 ---
 
@@ -35,47 +35,66 @@ This is a vue-cli 3.x plugin to add an Node Express server in your Vue project.
 
 :warning: Make sure you have vue-cli 3.x.x:
 
-```
+```sh
 vue --version
 ```
 
-If you don't have a project created with vue-cli 3.x yet:
+If you have not installed vue-cli 3, first follow the install instructions here: [https://cli.vuejs.org/](https://cli.vuejs.org/)
 
-```
+Generate a project using vue-cli 3
+
+```sh
 vue create my-new-app
 ```
 
-Navigate to the newly created project folder and add the cli plugin:
+Navigate to the newly created project folder and add this plugin. It is good practice to commit your changes prior to installing a new plugin.
 
-```
+```sh
 cd my-new-app
 vue add express
 ```
-Soon:
-*:information_source: An example `APIExample.vue` component will be added into your sources if you chose to include the examples.*
+
+:soon: _An example `APIExample.vue` component will be added should you choose to include examples when installing the plugin. ([⚠️ Needs contribution!](https://github.com/mathieutu/vue-cli-plugin-express/issues/12))_
+
+**Updating `vue-cli-plugin-express` will update the Express server service :+1:**
 
 ## Usage
 
-To start your server for development purpose, use this commands:
+To start your server for development, run:
 
-```
+```sh
 yarn express
 ```
 
-The server will be automatically restarted when a change is detected.
+The server will watch for file changes and automatically restart.
 
-You just then have to start the app:
+Then you just have to start the web app:
 
-```
+```sh
 yarn serve
 ```
 
-To run the server only once for production use, run:
-```
+## Use your app in production
+
+For production use you need to move `@vue/cli-service` from `devDependencies`to `dependencies`.
+Then build your app and run the server:
+
+```sh
+yarn build
 yarn express:run
 ```
 
-**Updating `vue-cli-plugin-express` will update the Express server service :+1:**
+While running in production you can serve the web app and api together from express by setting the plugin option, `shouldServeApp` to `true`. See the [Configuration](#configuration) section below for further details.
+
+Most cloud hosting services will expect a npm `start` script to run your application. It is recommended you add the following to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "start": "yarn express:run"
+  }
+}
+```
 
 ## Injected Commands
 
@@ -102,24 +121,5 @@ module.exports = {
       },
     },
   },
-}
-```
-
-## Use your app in production
-
-Move `@vue/cli-service` from `devDependencies`to `dependencies`.
-
-Execute the following commands:
-```bash
-yarn build
-yarn express:run
-```
-
-For most of cloud hosting services, you can add a `start` command that will be triggered automatically:
-```json
-{
-  "scripts": {
-    "start": "yarn express:run" 
-  }
 }
 ```
