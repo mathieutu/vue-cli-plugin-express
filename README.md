@@ -25,9 +25,9 @@ This is a vue-cli 3.x plugin to add a Node Express server to your Vue project.
 
 - [Getting started](#getting-started)
 - [Usage](#usage)
+- [Use your app in production](#use-your-app-in-production)
 - [Injected Commands](#injected-commands)
 - [Configuration](#configuration)
-- [Use your app in production](#use-your-app-in-production)
 
 ---
 
@@ -56,6 +56,8 @@ vue add express
 
 :soon: _An example `APIExample.vue` component will be added should you choose to include examples when installing the plugin. ([⚠️ Needs contribution!](https://github.com/mathieutu/vue-cli-plugin-express/issues/12))_
 
+**Updating `vue-cli-plugin-express` will update the Express server service :+1:**
+
 ## Usage
 
 To start your server for development, run:
@@ -72,17 +74,27 @@ Then you just have to start the web app:
 yarn serve
 ```
 
-Alternatively you can serve the web app and api together from express by setting the plugin option, `shouldServeApp` to `true`. See the [Configuration](#configuration) section below for further details. You will also need to tell Express where to serve your web application by adding the following to `./srv/index.js`;
+## Use your app in production
 
-```js
-var router = express.Router();
-router.use(express.static("./dist"));
-app.use("/", router);
+For production use you need to move `@vue/cli-service` from `devDependencies`to `dependencies`.
+Then build your app and run the server:
+
+```sh
+yarn build
+yarn express:run
 ```
 
-Where `./dist` is the location of your built web application.
+While running in production you can serve the web app and api together from express by setting the plugin option, `shouldServeApp` to `true`. See the [Configuration](#configuration) section below for further details.
 
-**Updating `vue-cli-plugin-express` will update the Express server service :+1:**
+Most cloud hosting services will expect a npm `start` script to run your application. It is recommended you add the following to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "start": "yarn express:run"
+  }
+}
+```
 
 ## Injected Commands
 
@@ -109,25 +121,5 @@ module.exports = {
       },
     },
   },
-}
-```
-
-## Use your app in production
-
-For production use you need to move `@vue/cli-service` from `devDependencies`to `dependencies`.
-Then build your app and run the server:
-
-```sh
-yarn build
-yarn express:run
-```
-
-Most cloud hosting services will expect a npm `start` script to run your application. It is recommended you add the following to your `package.json`:
-
-```json
-{
-  "scripts": {
-    "start": "yarn express:run"
-  }
 }
 ```
