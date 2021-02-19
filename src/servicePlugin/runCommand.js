@@ -1,5 +1,5 @@
 import serverUrl from '../utils/serverUrl';
-import logSuccessLunch from '../utils/logSuccessLaunch';
+import logSuccessLaunch from '../utils/logSuccessLaunch';
 import server from '../server';
 
 export default ({
@@ -9,8 +9,11 @@ export default ({
   isInProduction,
   distPath,
   hasTypescript,
+  https,
+  httpsConfig,
 }) => args => {
   const run = async (resolve) => {
+    console.log(args, defaultOptions);
     const {
       port,
       host,
@@ -19,6 +22,10 @@ export default ({
       localUrlForTerminal,
     } = await serverUrl.findServerUrl(args, defaultOptions);
 
+    // overwrite config with cmd arguments
+    https = args.https;
+
+    console.log(httpsConfig);
     const routes = await server({
       port,
       host,
@@ -27,17 +34,20 @@ export default ({
       hasTypescript,
       shouldServeApp,
       isInProduction,
+      https,
+      httpsConfig,
     });
 
     if (shouldServeApp && !isInProduction) {
       serverUrl.writeToFile(localUrl);
     }
 
-    logSuccessLunch({
+    logSuccessLaunch({
       urls: { local: localUrlForTerminal, network: networkUrl },
       routes,
       isInProduction,
       shouldServeApp,
+      https,
     });
 
     resolve();

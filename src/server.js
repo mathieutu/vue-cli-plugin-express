@@ -2,34 +2,49 @@ import express from 'express';
 import listEndpoints from 'express-list-endpoints';
 import history from 'connect-history-api-fallback';
 import httpServer from 'http';
+import httpsServer from 'https';
+import loadPem from './utils/loadPem';
 
 export default ({
   port,
   host,
   srvPath,
+  httpsConfig,
   distPath,
   hasTypescript,
   shouldServeApp,
   isInProduction,
+  https,
 }) => {
   return new Promise((resolve, reject) => {
     const app = express();
-    const http = httpServer.Server(app);
-
+    let certInfo;
+    if (https) {
+      certInfo = {
+        key: loadPem({httpsConfig, srvPath, option: 'key'}),
+        cert: loadPem({httpsConfig, srvPath, option: 'cert'}),
+      };
+    }
+    const webServer = !https
+      ? httpServer.Server(app)
+      : httpsServer.Server(
+        app,
+        certInfo
+      );
     if (hasTypescript) {
       require('ts-node/register/transpile-only');
     }
 
     const server = loadServer(srvPath);
 
-    server(app, http);
+    server(app, webServer);
 
     if (isInProduction && shouldServeApp) {
       app.use(history());
       app.use(express.static(distPath));
     }
 
-    http.listen(port, host, err => {
+    webServer.listen(port, host, err => {
       if (err) {
         reject(err);
       } else {
