@@ -24,7 +24,7 @@ export default ({ urls, routes, isInProduction, shouldServeApp }) => {
       console.log(`  ⚠️  Fallback to the app disabled: ${chalk.bold('your application is not served!')}`);
     }
   } else {
-    console.log(`  ⚙  You're in ${chalk.bold('development')} mode. to start the application, run ${cmd('serve')}.`);
+    console.log(`  ⚙️  You're in ${chalk.bold('development')} mode. to start the application, run ${cmd('serve')}.`);
     console.log();
     if (shouldServeApp) {
       console.log(`  🎉 Fallback to this server enabled: ${chalk.bold('you can use relative routes in your code!')}`);
