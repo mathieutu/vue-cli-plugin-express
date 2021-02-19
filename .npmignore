@@ -5,3 +5,4 @@ yarn.lock
 logo.psd
 src/**/.tmp*
 .idea
+.vscode/
