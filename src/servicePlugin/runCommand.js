@@ -9,8 +9,11 @@ export default ({
   isInProduction,
   distPath,
   hasTypescript,
+  https,
+  httpsConfig,
 }) => args => {
   const run = async (resolve) => {
+    console.log(args, defaultOptions);
     const {
       port,
       host,
@@ -19,6 +22,10 @@ export default ({
       localUrlForTerminal,
     } = await serverUrl.findServerUrl(args, defaultOptions);
 
+    // overwrite config with cmd arguments
+    https = args.https;
+
+    console.log(httpsConfig);
     const routes = await server({
       port,
       host,
@@ -27,6 +34,8 @@ export default ({
       hasTypescript,
       shouldServeApp,
       isInProduction,
+      https,
+      httpsConfig,
     });
 
     if (shouldServeApp && !isInProduction) {
@@ -38,6 +47,7 @@ export default ({
       routes,
       isInProduction,
       shouldServeApp,
+      https,
     });
 
     resolve();
