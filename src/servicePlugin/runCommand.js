@@ -1,5 +1,5 @@
 import serverUrl from '../utils/serverUrl';
-import logSuccessLunch from '../utils/logSuccessLaunch';
+import logSuccessLaunch from '../utils/logSuccessLaunch';
 import server from '../server';
 
 export default ({
@@ -33,7 +33,7 @@ export default ({
       serverUrl.writeToFile(localUrl);
     }
 
-    logSuccessLunch({
+    logSuccessLaunch({
       urls: { local: localUrlForTerminal, network: networkUrl },
       routes,
       isInProduction,
