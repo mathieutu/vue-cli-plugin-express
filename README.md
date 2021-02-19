@@ -77,6 +77,18 @@ yarn express:run
 
 **Updating `vue-cli-plugin-express` will update the Express server service :+1:**
 
+## https mode
+
+https is allowed via (lower items override)
+ * `https = true` in `pluginOptions`
+ * `--https true` in command line options
+
+https certificate and key information is loaded via (top first, key and cert are loaded separately if possible)
+ * `httpsConfig.key`, `httpsConfig.cert` file buffer (same as `devServer.https` option)
+ * `vue.config.js`'s `devServer.https` option
+ * `httpsConfig.keyPath`, `httpsConfig.certPath` path string option
+ * `SERVER_PATH/cert/key.pem`, `cert.pem` loaded directly
+
 ## Injected Commands
 
 - **`vue-cli-service express:watch`**
