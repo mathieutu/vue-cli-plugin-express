@@ -11,6 +11,7 @@ module.exports = (api, options) => {
   const srvPath = api.resolve(expressOptions.serverDir || config.serverDir);
   const distPath = api.resolve(options.outputDir);
   const hasTypescript = api.hasPlugin('typescript') || expressOptions.hasTypescript;
+  const httpsConfig = expressOptions.httpsConfig;
 
   if (shouldServeApp && !isInProduction) {
     addServerUrlToWebpackProxy(api);
@@ -25,6 +26,7 @@ module.exports = (api, options) => {
     isInProduction,
     distPath,
     hasTypescript,
+    httpsConfig,
   });
 };
 
