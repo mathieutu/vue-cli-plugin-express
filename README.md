@@ -66,6 +66,8 @@ The server will be automatically restarted when a change is detected.
 
 You just then have to start the app:
 
+> Note: https is not supported on this plugin. If you are using https mode on dev server, disable it or else you will get an ssl protocol error.
+
 ```
 yarn serve
 ```
